@@ -76,8 +76,6 @@ Searches the web. Returns a JSON string with `results` (up to 10 items),
 `totalResults`, and the echoed `query`. Each result has `title`, `url`,
 `snippet`, `domain`, `publishedDate`, and compliance metadata.
 
-See [`examples/`](./examples) for raw request shapes.
-
 ## License
 
 MIT

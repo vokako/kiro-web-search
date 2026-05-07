@@ -137,15 +137,17 @@ CLI flags AND env vars, CLI wins. Rationale:
 
 ## Lessons Learned
 
-- **`request.sh` single-quote bug**: the original reference script had
-  `-H 'authorization: Bearer $KIRO_API_KEY'` — the env var never expanded,
-  and the upstream returned a confusing "invalid bearer token" error. In
-  our Python implementation we build headers in code, which eliminates this
-  class of error. Keep that in mind if you ever rewrite against curl again.
-- **Hardcoded `content-length` bug in the same script**: curl computes
-  `Content-Length` automatically; never hardcode it. Same principle applies
-  if we ever expose a raw HTTP adapter: never compute framing manually.
-- **`amz-sdk-invocation-id` should be unique per request**: originally
-  hardcoded to a single UUID. The server will usually tolerate repeats but
-  strictly speaking these are supposed to be fresh per attempt. We now
-  generate one per call.
+Historical notes from early reference scripts (no longer in the repo — an
+`examples/request.sh` curl recipe was removed as the MCP server covers the
+same ground). Keep these in mind if you ever write a new raw curl harness:
+
+- **Single-quote variable expansion trap**: `-H 'authorization: Bearer $TOKEN'`
+  keeps `$TOKEN` as a literal because single quotes block shell expansion —
+  the upstream then returns a confusing "invalid bearer token" error. Use
+  double quotes, or build headers in code like we do now.
+- **Hardcoded `content-length`**: curl computes `Content-Length`
+  automatically; never hardcode it. The same principle applies anywhere we
+  expose a raw HTTP adapter — don't compute framing manually.
+- **`amz-sdk-invocation-id` must be unique per request**: the AWS SDK
+  rotates it per attempt, so a hardcoded or repeated value is a tell that
+  the traffic is not from a real SDK client. We now generate one per call.

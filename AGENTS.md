@@ -29,8 +29,6 @@ MCP client ──stdio JSON-RPC──▶ FastMCP (this pkg) ──HTTPS Bearer�
 - `.claude-plugin/plugin.json` — plugin manifest. Declares `userConfig.api_key`
   (prompted at install time, stored in the system keychain) and embeds the MCP
   server config inline. Substitution: `KIRO_API_KEY=${user_config.api_key}`.
-- `examples/request.sh` — raw curl against upstream (for debugging upstream
-  issues without going through MCP).
 - `tests/` — smoke tests for the handshake + a mocked `tools/call`.
 
 ## Conventions specific to this project
