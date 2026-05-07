@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
   "name": "kiro-web-search",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "MCP tool that returns up-to-date web results.",
   "author": {
     "name": "clawd",
@@ -21,7 +21,7 @@
     }
   },
   "mcpServers": {
-    "web-search": {
+    "default": {
       "command": "uvx",
       "args": ["kiro-web-search"],
       "env": {

@@ -1,10 +1,13 @@
-# Feature: web_search MCP tool
+# Feature: `search` MCP tool
 
 ## Description
 
-Expose a single MCP tool `web_search(query: string)` that performs a web
+Expose a single MCP tool `search(query: string)` that performs a web
 search by proxying through Kiro's backend (CodeWhisperer MCP endpoint) and
-returns the upstream tool result verbatim.
+returns the upstream tool result verbatim. Upstream's tool is still named
+`web_search` — we rename on exposure to avoid redundancy when the tool is
+accessed through Claude Code's `mcp__plugin_<plugin>_<server>__<tool>`
+namespacing.
 
 ## Scope of Impact
 
@@ -14,7 +17,7 @@ returns the upstream tool result verbatim.
 
 ## Behavior Details
 
-### Tool: `web_search`
+### Tool: `search`
 
 **Input:**
 

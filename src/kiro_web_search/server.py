@@ -139,10 +139,10 @@ def perform_web_search(config: Config, query: str) -> str:
 
 
 def build_server(config: Config) -> FastMCP:
-    mcp = FastMCP(name="web-search")
+    mcp = FastMCP(name="default")
 
     @mcp.tool
-    def web_search(query: str) -> str:
+    def search(query: str) -> str:
         """Search the web and return up-to-date results.
 
         Args:

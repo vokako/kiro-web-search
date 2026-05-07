@@ -1,6 +1,6 @@
 # kiro-web-search
 
-A minimal MCP server that exposes a `web_search` tool to any MCP-compatible
+A minimal MCP server that exposes a `search` tool to any MCP-compatible
 agent (Claude Code, Claude Desktop, Cursor, Kiro CLI, Continue, etc.) over
 stdio.
 
@@ -18,7 +18,7 @@ Inside any Claude Code session:
 
 Claude Code will prompt you for the API key (stored securely in your
 system keychain). Run `/reload-plugins` or start a new session and the
-`web_search` tool appears.
+`search` tool appears.
 
 To update later: `/plugin update kiro-web-search@kiro-web-search`.
 
@@ -60,7 +60,7 @@ CLI flags override environment variables.
 
 ## Exposed tool
 
-### `web_search(query: string) -> string`
+### `search(query: string) -> string`
 
 Searches the web. Returns a JSON string with `results` (up to 10 items),
 `totalResults`, and the echoed `query`. Each result has `title`, `url`,
