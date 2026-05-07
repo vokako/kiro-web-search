@@ -43,7 +43,7 @@ To update later: `/plugin update kiro-web-search@kiro-web-search`.
 ### Claude Code without the plugin system
 
 ```bash
-claude mcp add --transport stdio \
+claude mcp add --scope user \
   --env KIRO_API_KEY=your-token \
   web-search -- uvx kiro-web-search
 ```
