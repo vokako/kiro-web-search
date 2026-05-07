@@ -29,7 +29,7 @@ To update later: `/plugin update kiro-web-search@kiro-web-search`.
 ```json
 {
   "mcpServers": {
-    "kiro-web-search": {
+    "web-search": {
       "command": "uvx",
       "args": ["kiro-web-search"],
       "env": {
@@ -45,7 +45,7 @@ To update later: `/plugin update kiro-web-search@kiro-web-search`.
 ```bash
 claude mcp add --transport stdio \
   --env KIRO_API_KEY=your-token \
-  kiro-web-search -- uvx kiro-web-search
+  web-search -- uvx kiro-web-search
 ```
 
 ## Configuration

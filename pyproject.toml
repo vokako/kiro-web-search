@@ -1,6 +1,6 @@
 [project]
 name = "kiro-web-search"
-version = "0.1.0"
+version = "0.1.1"
 description = "A minimal MCP server that wraps Kiro's web_search backend, distributable via uvx."
 readme = "README.md"
 license = { text = "MIT" }

@@ -139,7 +139,7 @@ def perform_web_search(config: Config, query: str) -> str:
 
 
 def build_server(config: Config) -> FastMCP:
-    mcp = FastMCP(name="kiro-web-search")
+    mcp = FastMCP(name="web-search")
 
     @mcp.tool
     def web_search(query: str) -> str:
