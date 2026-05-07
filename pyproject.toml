@@ -1,0 +1,43 @@
+[project]
+name = "kiro-web-search"
+version = "0.1.0"
+description = "A minimal MCP server that wraps Kiro's web_search backend, distributable via uvx."
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "clawd" }]
+requires-python = ">=3.10"
+keywords = ["mcp", "model-context-protocol", "web-search", "kiro", "fastmcp"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+dependencies = [
+    "fastmcp>=2.0,<4.0",
+]
+
+[project.scripts]
+kiro-web-search = "kiro_web_search.server:main"
+
+[project.urls]
+Homepage = "https://github.com/vokako/kiro-web-search"
+Issues = "https://github.com/vokako/kiro-web-search/issues"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/kiro_web_search"]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+]

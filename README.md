@@ -1,0 +1,92 @@
+# kiro-web-search
+
+A minimal MCP server that exposes a `web_search` tool to any MCP-compatible
+agent (Claude Code, Claude Desktop, Cursor, Kiro CLI, Continue, etc.) over
+stdio.
+
+Thin transport adapter: stdio JSON-RPC ↔ upstream HTTPS MCP endpoint.
+No caching, no post-processing, results passed through verbatim.
+
+## Install in Claude Code (one-click)
+
+Inside any Claude Code session:
+
+```
+/plugin marketplace add vokako/kiro-web-search
+/plugin install kiro-web-search@kiro-web-search
+```
+
+Claude Code will prompt you for the API key (stored securely in your
+system keychain). Run `/reload-plugins` or start a new session and the
+`web_search` tool appears.
+
+To update later: `/plugin update kiro-web-search@kiro-web-search`.
+
+## Install in other MCP clients
+
+### Claude Desktop, Cursor, Continue, generic stdio clients
+
+```json
+{
+  "mcpServers": {
+    "kiro-web-search": {
+      "command": "uvx",
+      "args": ["kiro-web-search"],
+      "env": {
+        "KIRO_API_KEY": "your-token"
+      }
+    }
+  }
+}
+```
+
+### Claude Code without the plugin system
+
+```bash
+claude mcp add --transport stdio \
+  --env KIRO_API_KEY=your-token \
+  kiro-web-search -- uvx kiro-web-search
+```
+
+### Direct invocation (no MCP client)
+
+```bash
+export KIRO_API_KEY=your-token
+uvx kiro-web-search            # no permanent install
+# or
+uv tool install kiro-web-search && kiro-web-search
+```
+
+### Pin a version (recommended for production)
+
+```json
+{
+  "command": "uvx",
+  "args": ["kiro-web-search==0.1.0"],
+  "env": { "KIRO_API_KEY": "your-token" }
+}
+```
+
+## Configuration
+
+| Setting  | CLI flag      | Env var         | Default                              |
+| -------- | ------------- | --------------- | ------------------------------------ |
+| API key  | `--api-key`   | `KIRO_API_KEY`  | — (required)                         |
+| Endpoint | `--endpoint`  | `KIRO_ENDPOINT` | `https://q.us-east-1.amazonaws.com/` |
+| Timeout  | `--timeout`   | `KIRO_TIMEOUT`  | `30` seconds                         |
+
+CLI flags override environment variables.
+
+## Exposed tool
+
+### `web_search(query: string) -> string`
+
+Searches the web. Returns a JSON string with `results` (up to 10 items),
+`totalResults`, and the echoed `query`. Each result has `title`, `url`,
+`snippet`, `domain`, `publishedDate`, and compliance metadata.
+
+See [`examples/`](./examples) for raw request shapes.
+
+## License
+
+MIT

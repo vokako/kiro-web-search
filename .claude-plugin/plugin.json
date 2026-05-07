@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "kiro-web-search",
+  "version": "0.1.0",
+  "description": "MCP tool that returns up-to-date web results.",
+  "author": {
+    "name": "clawd",
+    "url": "https://github.com/vokako"
+  },
+  "homepage": "https://github.com/vokako/kiro-web-search",
+  "repository": "https://github.com/vokako/kiro-web-search",
+  "license": "MIT",
+  "keywords": ["web-search", "mcp", "search"],
+  "userConfig": {
+    "api_key": {
+      "type": "string",
+      "title": "API Key",
+      "description": "Bearer token for the upstream search backend.",
+      "sensitive": true,
+      "required": true
+    }
+  },
+  "mcpServers": {
+    "kiro-web-search": {
+      "command": "uvx",
+      "args": ["kiro-web-search"],
+      "env": {
+        "KIRO_API_KEY": "${user_config.api_key}"
+      }
+    }
+  }
+}

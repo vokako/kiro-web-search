@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-marketplace.json",
+  "name": "kiro-web-search",
+  "owner": {
+    "name": "clawd",
+    "url": "https://github.com/vokako"
+  },
+  "description": "Single-plugin marketplace hosting the kiro-web-search MCP tool.",
+  "plugins": [
+    {
+      "name": "kiro-web-search",
+      "source": "./",
+      "description": "Adds a web_search tool that returns up-to-date web results.",
+      "category": "External integrations",
+      "keywords": ["web-search", "mcp", "search"]
+    }
+  ]
+}

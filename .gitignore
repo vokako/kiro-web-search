@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+.eggs/
+dist/
+build/
+
+# Virtual envs
+.venv/
+venv/
+env/
+
+# uv
+.uv-cache/
+
+# Testing / coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Editor / OS
+.DS_Store
+*.swp
+*~
+.vscode/
+.idea/
+
+# Secrets / env
+.env
+.env.local
+
+# Temp (see AGENTS.md §七 — all scratch goes here, never committed)
+temp/
