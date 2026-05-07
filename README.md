@@ -7,6 +7,16 @@ stdio.
 Thin transport adapter: stdio JSON-RPC ↔ upstream HTTPS MCP endpoint.
 No caching, no post-processing, results passed through verbatim.
 
+## Prerequisite: get an API key
+
+Requires a Kiro Pro / Pro+ / Power subscription. Sign in at
+[app.kiro.dev](https://app.kiro.dev), open **API Keys**, create a new key,
+and copy it — the full value is only shown once. Keys look like
+`ksk_xxxxxxxx`. Full instructions:
+[Kiro CLI docs → Authenticate with an API key](https://kiro.dev/docs/cli/authentication/#authenticate-with-an-api-key-headless-mode).
+
+Use the key as `KIRO_API_KEY` in any of the install paths below.
+
 ## Install in Claude Code (one-click)
 
 Inside any Claude Code session:
