@@ -48,25 +48,6 @@ claude mcp add --transport stdio \
   kiro-web-search -- uvx kiro-web-search
 ```
 
-### Direct invocation (no MCP client)
-
-```bash
-export KIRO_API_KEY=your-token
-uvx kiro-web-search            # no permanent install
-# or
-uv tool install kiro-web-search && kiro-web-search
-```
-
-### Pin a version (recommended for production)
-
-```json
-{
-  "command": "uvx",
-  "args": ["kiro-web-search==0.1.0"],
-  "env": { "KIRO_API_KEY": "your-token" }
-}
-```
-
 ## Configuration
 
 | Setting  | CLI flag      | Env var         | Default                              |
