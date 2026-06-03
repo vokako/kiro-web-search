@@ -32,6 +32,27 @@ system keychain). Run `/reload-plugins` or start a new session and the
 
 To update later: `/plugin update kiro-web-search@kiro-web-search`.
 
+## Install in Codex CLI
+
+Codex CLI has no plugin marketplace — MCP servers live in
+`~/.codex/config.toml`. Add this one with a single command:
+
+```bash
+codex mcp add web-search --env KIRO_API_KEY=your-token -- uvx kiro-web-search
+```
+
+Or edit `~/.codex/config.toml` directly:
+
+```toml
+[mcp_servers.web-search]
+command = "uvx"
+args = ["kiro-web-search"]
+env = { KIRO_API_KEY = "your-token" }
+```
+
+Restart Codex and the `search` tool appears. Manage it with `codex mcp list`,
+`codex mcp get web-search`, or `codex mcp remove web-search`.
+
 ## Install in other MCP clients
 
 ### Claude Desktop, Cursor, Continue, generic stdio clients
