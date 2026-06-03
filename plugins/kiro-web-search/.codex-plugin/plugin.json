@@ -7,7 +7,7 @@
   "interface": {
     "displayName": "Kiro Web Search",
     "category": "External integrations",
-    "developerName": "clawd",
+    "developerName": "vokako",
     "websiteURL": "https://github.com/vokako/kiro-web-search"
   }
 }
