@@ -64,7 +64,9 @@ Or edit `~/.codex/config.toml` directly:
 [mcp_servers.web-search]
 command = "uvx"
 args = ["kiro-web-search"]
-env = { KIRO_API_KEY = "your-token" }
+
+[mcp_servers.web-search.env]
+KIRO_API_KEY = "your-token"
 ```
 
 Restart Codex and the `search` tool appears. Manage it with `codex mcp list`,
