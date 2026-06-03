@@ -19,8 +19,6 @@ Use the key as `KIRO_API_KEY` in any of the install paths below.
 
 ## Install in Claude Code
 
-Two ways — pick whichever you prefer.
-
 ### Option A — as a plugin (one-click)
 
 Inside any Claude Code session:
@@ -43,8 +41,6 @@ claude mcp add --scope user web-search \
 ```
 
 ## Install in Codex CLI
-
-Two ways — pick whichever you prefer.
 
 ### Option A — as a Codex plugin
 
