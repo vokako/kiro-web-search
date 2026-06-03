@@ -1,0 +1,13 @@
+{
+  "name": "kiro-web-search",
+  "version": "0.1.2",
+  "description": "MCP tool that returns up-to-date web results.",
+  "keywords": ["web-search", "mcp", "search"],
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Kiro Web Search",
+    "category": "External integrations",
+    "developerName": "clawd",
+    "websiteURL": "https://github.com/vokako/kiro-web-search"
+  }
+}

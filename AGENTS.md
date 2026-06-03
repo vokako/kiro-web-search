@@ -29,6 +29,16 @@ MCP client ──stdio JSON-RPC──▶ FastMCP (this pkg) ──HTTPS Bearer�
 - `.claude-plugin/plugin.json` — plugin manifest. Declares `userConfig.api_key`
   (prompted at install time, stored in the system keychain) and embeds the MCP
   server config inline. Substitution: `KIRO_API_KEY=${user_config.api_key}`.
+- `.agents/plugins/marketplace.json` — Codex plugin marketplace. Users add via
+  `codex plugin marketplace add vokako/kiro-web-search`. Local plugin `source`
+  must be a subdir (`./plugins/...`); Codex rejects `"./"`, so the Codex plugin
+  cannot live at the repo root like the Claude one does.
+- `plugins/kiro-web-search/.codex-plugin/plugin.json` — Codex plugin manifest.
+  Unlike Claude, `mcpServers` is a **path** to a file, not an inline object,
+  and there is **no `userConfig` secret prompt**.
+- `plugins/kiro-web-search/.mcp.json` — Codex MCP server file. The API key is
+  inherited from the shell via `env_vars: ["KIRO_API_KEY"]` (Codex can't prompt
+  for it). Format verified against `openai/codex` `core-plugins/src/loader.rs`.
 - `tests/` — smoke tests for the handshake + a mocked `tools/call`.
 
 ## Conventions specific to this project

@@ -34,8 +34,25 @@ To update later: `/plugin update kiro-web-search@kiro-web-search`.
 
 ## Install in Codex CLI
 
-Codex CLI has no plugin marketplace — MCP servers live in
-`~/.codex/config.toml`. Add this one with a single command:
+Two ways — pick whichever you prefer.
+
+### Option A — as a Codex plugin
+
+Codex plugins can't prompt for secrets at install time, so export your key
+first, then add this repo as a plugin marketplace and install it:
+
+```bash
+export KIRO_API_KEY=your-token
+codex plugin marketplace add vokako/kiro-web-search
+codex plugin add kiro-web-search@kiro-web-search
+```
+
+The plugin lives at `plugins/kiro-web-search/` (manifest in
+`.codex-plugin/plugin.json`, server in `.mcp.json`). The server inherits
+`KIRO_API_KEY` from your environment. Manage it with `codex plugin list` and
+`codex plugin remove kiro-web-search@kiro-web-search`.
+
+### Option B — as a plain MCP server
 
 ```bash
 codex mcp add web-search --env KIRO_API_KEY=your-token -- uvx kiro-web-search

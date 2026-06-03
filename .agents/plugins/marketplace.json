@@ -1,0 +1,11 @@
+{
+  "name": "kiro-web-search",
+  "interface": { "displayName": "Kiro Web Search" },
+  "plugins": [
+    {
+      "name": "kiro-web-search",
+      "source": "./plugins/kiro-web-search",
+      "category": "External integrations"
+    }
+  ]
+}

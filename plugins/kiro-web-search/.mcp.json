@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "web-search": {
+      "command": "uvx",
+      "args": ["kiro-web-search"],
+      "env_vars": ["KIRO_API_KEY"]
+    }
+  }
+}
