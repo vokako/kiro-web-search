@@ -17,7 +17,11 @@ and copy it — the full value is only shown once. Keys look like
 
 Use the key as `KIRO_API_KEY` in any of the install paths below.
 
-## Install in Claude Code (one-click)
+## Install in Claude Code
+
+Two ways — pick whichever you prefer.
+
+### Option A — as a plugin (one-click)
 
 Inside any Claude Code session:
 
@@ -26,11 +30,17 @@ Inside any Claude Code session:
 /plugin install kiro-web-search@kiro-web-search
 ```
 
-Claude Code will prompt you for the API key (stored securely in your
-system keychain). Run `/reload-plugins` or start a new session and the
-`search` tool appears.
+Claude Code prompts you for the API key (stored securely in your system
+keychain). Run `/reload-plugins` or start a new session and the `search` tool
+appears. Update later with `/plugin update kiro-web-search@kiro-web-search`.
 
-To update later: `/plugin update kiro-web-search@kiro-web-search`.
+### Option B — as a plain MCP server
+
+```bash
+claude mcp add --scope user web-search \
+  -e KIRO_API_KEY=your-token \
+  -- uvx kiro-web-search
+```
 
 ## Install in Codex CLI
 
@@ -88,14 +98,6 @@ Restart Codex and the `search` tool appears. Manage it with `codex mcp list`,
     }
   }
 }
-```
-
-### Claude Code without the plugin system
-
-```bash
-claude mcp add --scope user web-search \
-  -e KIRO_API_KEY=your-token \
-  -- uvx kiro-web-search
 ```
 
 ## Configuration
