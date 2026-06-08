@@ -101,7 +101,7 @@ Restart Codex and the `search` tool appears. Manage it with `codex mcp list`,
 | Setting  | CLI flag      | Env var         | Default                              |
 | -------- | ------------- | --------------- | ------------------------------------ |
 | API key  | `--api-key`   | `KIRO_API_KEY`  | — (required)                         |
-| Endpoint | `--endpoint`  | `KIRO_ENDPOINT` | `https://q.us-east-1.amazonaws.com/` |
+| Endpoint | `--endpoint`  | `KIRO_ENDPOINT` | `https://runtime.us-east-1.kiro.dev/` |
 | Timeout  | `--timeout`   | `KIRO_TIMEOUT`  | `30` seconds                         |
 
 CLI flags override environment variables.

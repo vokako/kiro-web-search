@@ -6,7 +6,7 @@
 
 A **single-tool MCP server** that wraps Kiro's backend `web_search` endpoint.
 The upstream is itself an MCP server reachable via
-`AmazonCodeWhispererStreamingService.InvokeMCP` on `q.us-east-1.amazonaws.com`,
+`AmazonCodeWhispererStreamingService.InvokeMCP` on `runtime.us-east-1.kiro.dev`,
 so this project is fundamentally a **transport adapter**: stdio JSON-RPC ↔
 HTTPS + Bearer auth.
 

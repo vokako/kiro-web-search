@@ -121,7 +121,7 @@ def test_resolve_config_env_fallback(monkeypatch: pytest.MonkeyPatch) -> None:
     cfg = _resolve_config(args)
 
     assert cfg.api_key == "env-key"
-    assert cfg.endpoint == "https://q.us-east-1.amazonaws.com/"
+    assert cfg.endpoint == "https://runtime.us-east-1.kiro.dev/"
     assert cfg.timeout == 30
 
 

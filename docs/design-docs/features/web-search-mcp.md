@@ -52,14 +52,16 @@ A hand-rolled stdlib-only implementation was considered and rejected:
 
 We send the exact headers a real AmazonQ-For-CLI client sends, including:
 
-- `user-agent: aws-sdk-rust/1.3.14 ua/2.1 api/codewhispererstreaming/... app/AmazonQ-For-CLI`
-- `x-amz-user-agent: ...` (same string shape, slightly different suffix)
-- `redirect-for-internal: true`
+- `user-agent: aws-sdk-rust/1.3.15 ua/2.1 api/codewhispererstreaming/0.1.16551 ... md/appVersion-2.6.0 app/AmazonQ-For-CLI`
+- `x-amz-user-agent: ...` (same string shape, `m/F` suffix)
 - `x-amzn-codewhisperer-optout: true`
+- `tokentype: API_KEY`
+- `amz-sdk-request: attempt=1; max=3`
+- `amz-sdk-invocation-id: <fresh UUID per call>`
 
-**Rationale:** the endpoint `q.us-east-1.amazonaws.com` is tuned for the
-AmazonQ CLI. Advertising our own user-agent (`kiro-web-search-mcp/0.1.0` or
-similar) is a reliable way to:
+**Rationale:** the endpoint `runtime.us-east-1.kiro.dev` is tuned for the
+AmazonQ / Kiro CLI. Advertising our own user-agent (`kiro-web-search-mcp/0.1.0`
+or similar) is a reliable way to:
 
 1. Get bucketed into an unexpected rate-limit tier.
 2. Show up on a traffic-pattern dashboard as "unknown client" and invite
@@ -70,11 +72,30 @@ similar) is a reliable way to:
 
 - **Do not add our own `user-agent`, `x-amz-user-agent`, or any custom
   tracer headers.** The disguise is only effective if it's complete.
+- **Do not add a `redirect-for-internal: true` header.** Earlier captures
+  contained it; current captures (June 2026, AmazonQ-For-CLI v2.6.0) do
+  not. Re-introducing it would make our traffic look stale.
 - `amz-sdk-invocation-id` must be a **fresh UUID per request**. `aws-sdk-rust`
   rotates it per attempt; a hardcoded or repeated value is a tell.
 - If the upstream starts rejecting requests, update the two UA strings in
   lockstep from a current AmazonQ-For-CLI capture. They must agree on
   version/OS/lang fields.
+
+**Endpoint migration (June 2026):**
+
+The default endpoint moved from `https://q.us-east-1.amazonaws.com/` to
+`https://runtime.us-east-1.kiro.dev/` to follow the AmazonQ → Kiro brand
+rename. Both endpoints accept the same payload as of testing, but we
+default to the new one because:
+
+1. The old generic AWS subdomain is on the typical 6–12 month deprecation
+   path that follows a brand split.
+2. The new domain semantically matches the product, removing one
+   inconsistency between our impersonation and what real clients send.
+
+Users who set `KIRO_ENDPOINT` explicitly are not affected — only the
+default changed. If the new domain misbehaves, fall back via
+`KIRO_ENDPOINT=https://q.us-east-1.amazonaws.com/`.
 
 **Non-goals:**
 

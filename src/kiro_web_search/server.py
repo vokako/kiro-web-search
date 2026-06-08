@@ -24,7 +24,7 @@ from fastmcp import FastMCP
 
 from kiro_web_search import __version__
 
-DEFAULT_ENDPOINT = "https://q.us-east-1.amazonaws.com/"
+DEFAULT_ENDPOINT = "https://runtime.us-east-1.kiro.dev/"
 DEFAULT_TIMEOUT = 30
 
 # Impersonate the AmazonQ CLI. The upstream endpoint is tuned for that client;
@@ -32,11 +32,11 @@ DEFAULT_TIMEOUT = 30
 # These two strings are copied verbatim from a real AmazonQ-For-CLI request and
 # must stay in lockstep with each other. See design-docs for rationale.
 _UA = (
-    "aws-sdk-rust/1.3.14 ua/2.1 api/codewhispererstreaming/0.1.14474 "
-    "os/macos lang/rust/1.92.0 md/appVersion-2.2.1 app/AmazonQ-For-CLI"
+    "aws-sdk-rust/1.3.15 ua/2.1 api/codewhispererstreaming/0.1.16551 "
+    "os/macos lang/rust/1.92.0 md/appVersion-2.6.0 app/AmazonQ-For-CLI"
 )
 _X_AMZ_UA = (
-    "aws-sdk-rust/1.3.14 ua/2.1 api/codewhispererstreaming/0.1.14474 "
+    "aws-sdk-rust/1.3.15 ua/2.1 api/codewhispererstreaming/0.1.16551 "
     "os/macos lang/rust/1.92.0 m/F app/AmazonQ-For-CLI"
 )
 
@@ -63,7 +63,6 @@ def _build_headers(api_key: str) -> dict[str, str]:
         "x-amz-user-agent": _X_AMZ_UA,
         "x-amzn-codewhisperer-optout": "true",
         "tokentype": "API_KEY",
-        "redirect-for-internal": "true",
         "authorization": f"Bearer {api_key}",
         "amz-sdk-request": "attempt=1; max=3",
         "amz-sdk-invocation-id": str(uuid.uuid4()),

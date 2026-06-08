@@ -72,7 +72,7 @@ The `content[0].text` is a stringified JSON object with fields:
 
 ## API Dependencies
 
-- **Upstream endpoint:** `POST https://q.us-east-1.amazonaws.com/` (override
+- **Upstream endpoint:** `POST https://runtime.us-east-1.kiro.dev/` (override
   via `--endpoint` / `KIRO_ENDPOINT` for testing or region change)
 - **Upstream protocol:** AWS JSON 1.0 envelope carrying MCP JSON-RPC 2.0 in
   the body. Target header: `AmazonCodeWhispererStreamingService.InvokeMCP`.
@@ -83,7 +83,7 @@ The `content[0].text` is a stringified JSON object with fields:
 | Setting  | CLI flag     | Env var         | Default                              | Required |
 | -------- | ------------ | --------------- | ------------------------------------ | -------- |
 | API key  | `--api-key`  | `KIRO_API_KEY`  | —                                    | yes      |
-| Endpoint | `--endpoint` | `KIRO_ENDPOINT` | `https://q.us-east-1.amazonaws.com/` | no       |
+| Endpoint | `--endpoint` | `KIRO_ENDPOINT` | `https://runtime.us-east-1.kiro.dev/` | no       |
 | Timeout  | `--timeout`  | `KIRO_TIMEOUT`  | `30` (seconds)                       | no       |
 
 **Precedence:** CLI flag > environment variable > built-in default.
