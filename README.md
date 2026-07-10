@@ -1,8 +1,9 @@
 # kiro-web-search
 
-> **Disclaimer:** This tool is not an official or stable API endpoint endorsed
-> by Kiro. It wraps an internal backend endpoint that may change or break at any
-> time without notice. It is intended for personal use with your own Kiro
+> [!CAUTION]
+> This tool is not an official or stable API endpoint endorsed by Kiro. It
+> wraps an internal backend endpoint that may change or break at any time
+> without notice. It is intended for personal use with your own Kiro
 > subscription only — do not rely on it for production or shared workloads.
 
 A minimal MCP server that exposes a `search` tool to any MCP-compatible
